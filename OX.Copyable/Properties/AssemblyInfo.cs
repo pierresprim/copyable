@@ -7,5 +7,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Håvard Stranden")]
 [assembly: AssemblyProduct("Copyable")]
 [assembly: AssemblyCopyright("Copyright © Håvard Stranden 2008-2009. All rights reserved.")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
