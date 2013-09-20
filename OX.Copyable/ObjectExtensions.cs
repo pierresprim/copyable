@@ -11,6 +11,8 @@ namespace OX.Copyable
     /// </summary>
     public static class ObjectExtensions
     {
+        
+
         /// <summary>
         /// A list of instance providers that are available.
         /// </summary>
@@ -57,18 +59,22 @@ namespace OX.Copyable
         /// <returns>An <see cref="IEnumerable" /> of the instance providers of the assembly.</returns>
         private static IEnumerable<IInstanceProvider> GetInstanceProviders(Assembly assembly)
         {
+
             foreach (Type t in assembly.GetTypes())
             {
-                if (typeof(IInstanceProvider).IsAssignableFrom(t))
+                if (t != typeof(IInstanceProvider) && t != typeof(IInstanceProvider<>) && t != typeof(InstanceProvider<>))
                 {
-                    IInstanceProvider instance = null;
-                    try
+                    if (typeof(IInstanceProvider).IsAssignableFrom(t))
                     {
-                        instance = (IInstanceProvider)Activator.CreateInstance(t);
+                        IInstanceProvider instance = null;
+                        try
+                        {
+                            instance = (IInstanceProvider)Activator.CreateInstance(t);
+                        }
+                        catch { } // Ignore provider if it cannot be created
+                        if (instance != null)
+                            yield return instance;
                     }
-                    catch { } // Ignore provider if it cannot be created
-                    if (instance != null)
-                        yield return instance;
                 }
             }
         }
@@ -166,6 +172,9 @@ namespace OX.Copyable
         {
             Type instanceType = instance.GetType();
 
+            if (instanceType.IsValueType)
+                return instance;
+
             if (typeof(Copyable).IsAssignableFrom(instanceType))
                 return ((Copyable)instance).CreateInstanceForCopy();
             foreach (IInstanceProvider provider in Providers)
@@ -176,6 +185,7 @@ namespace OX.Copyable
 
             try
             {
+                //return Activator.CreateInstance(instanceType);
                 return FormatterServices.GetUninitializedObject(instanceType);
             }
             catch
