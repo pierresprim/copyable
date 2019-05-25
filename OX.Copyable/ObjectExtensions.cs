@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -145,13 +146,16 @@ namespace OX.Copyable
         private static object Clone(this object instance, VisitedGraph visited, object copy)
         {
             if (visited.ContainsKey(instance))
+
                 return visited[instance];
+
             else
+
                 visited.Add(instance, copy);
 
             Type type = instance.GetType();
 
-            object value = null;
+            object value;
 
             while (type != null)
             {
