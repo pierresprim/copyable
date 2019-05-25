@@ -17,7 +17,7 @@
         [TestMethod]
         public void InheritedFieldsAreCopied()
         {
-            var bar = new Bar() { Value = 42 };
+            Bar bar = new Bar() { Value = 42 };
 
             Bar copy = (Bar)bar.Copy();
 

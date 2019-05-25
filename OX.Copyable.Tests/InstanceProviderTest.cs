@@ -10,6 +10,7 @@
         public override SolidBrush CreateTypedCopy(SolidBrush toBeCopied)
         {
             NumCalls++;
+
             return new SolidBrush(toBeCopied.Color);
         }
     }
@@ -27,7 +28,6 @@
             
             Assert.AreNotSame(a, b);
             Assert.IsTrue(SolidBrushProvider.NumCalls > 0);
-
         }
 
         [TestMethod]

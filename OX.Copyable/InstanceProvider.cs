@@ -13,15 +13,9 @@ namespace OX.Copyable
     {
         #region IInstanceProvider Members
 
-        public Type Provided
-        {
-            get { return typeof(T); }
-        }
+        public Type Provided => typeof(T);
 
-        public object CreateCopy(object toBeCopied)
-        {
-            return CreateTypedCopy((T)toBeCopied);
-        }
+        public object CreateCopy(object toBeCopied) => CreateTypedCopy((T)toBeCopied);
 
         public abstract T CreateTypedCopy(T toBeCopied);
 

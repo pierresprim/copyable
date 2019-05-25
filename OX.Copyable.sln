@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OX.Copyable", "OX.Copyable\OX.Copyable.csproj", "{44974FCD-7B84-425D-B8F1-8FF029335B89}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OX.Copyable.Tests", "OX.Copyable.Tests\OX.Copyable.Tests.csproj", "{AA397E76-A5B1-4CE2-AF53-71243E8F2F41}"
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5E96979-3229-4EEA-9231-A0A893534B88}
 	EndGlobalSection
 EndGlobal

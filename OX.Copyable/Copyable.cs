@@ -18,10 +18,7 @@ namespace OX.Copyable
     ///       private ACopyable _friend;
     ///       
     ///       public ACopyable(ACopyable friend)
-    ///         : base(friend)
-    ///       {
-    ///         this._friend = friend;
-    ///       }
+    ///         : base(friend) => this._friend = friend;
     ///     }
     /// </example>
     public abstract class Copyable
@@ -36,11 +33,13 @@ namespace OX.Copyable
             MethodBase method = frame.GetMethod();
             
             if (!method.IsConstructor)
+
                 throw new InvalidOperationException("Copyable cannot be instantiated directly; use a subclass.");
             
             ParameterInfo[] parameters = method.GetParameters();
             
             if(args.Length > parameters.Length)
+
                 throw new InvalidOperationException("Copyable constructed with more arguments than the constructor of its subclass.");
             
             List<Type> constructorTypeArgs = new List<Type>();
@@ -49,13 +48,18 @@ namespace OX.Copyable
             for(; i < args.Length; ++i)
             {
                 if (!parameters[i].ParameterType.IsAssignableFrom(args[i].GetType()))
+
                     throw new InvalidOperationException(string.Format("Copyable constructed with invalid type {0} for argument #{2} (should be {1})", args[i].GetType(), parameters[i].ParameterType, i));
+
                 constructorTypeArgs.Add(parameters[i].ParameterType);
             }
+
             for (; i < parameters.Length; ++i)
             {
                 if (!parameters[i].IsOptional)
+
                     throw new InvalidOperationException("Copyable constructed with too few arguments.");
+
                 constructorTypeArgs.Add(parameters[i].ParameterType);
             }
 
@@ -63,9 +67,6 @@ namespace OX.Copyable
             constructorArgs = args;
         }
 
-        public object CreateInstanceForCopy()
-        {
-            return constructor.Invoke(constructorArgs);
-        }
+        public object CreateInstanceForCopy() => constructor.Invoke(constructorArgs);
     }
 }

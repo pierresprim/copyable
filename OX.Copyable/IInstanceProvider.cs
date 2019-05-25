@@ -14,6 +14,7 @@ namespace OX.Copyable
         /// The type for which the provider provides instances.
         /// </summary>
         Type Provided { get; }
+
         /// <summary>
         /// Creates a new instance.
         /// </summary>

@@ -10,11 +10,16 @@ namespace OX.Copyable.Tests
         [TestMethod]
         public void DictionaryIsCopied()
         {
-            var dict = new Dictionary<int, Exception>();
-            dict.Add(0, new Exception("Test"));
+            Dictionary<int, Exception> dict = new Dictionary<int, Exception>
+            {
+                { 0, new Exception("Test") }
+            };
 
-            var copy = (Dictionary<int, Exception>) dict.Copy();
+            Dictionary<int, Exception> copy = (Dictionary<int, Exception>)dict.Copy();
+
             Assert.AreNotSame(copy[0], dict[0]);
-            Assert.AreEqual(copy[0].Message, dict[0].Message);        }
+
+            Assert.AreEqual(copy[0].Message, dict[0].Message);
+        }
     }
 }

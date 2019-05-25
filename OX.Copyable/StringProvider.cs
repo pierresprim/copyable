@@ -5,11 +5,8 @@ using System.Text;
 
 namespace OX.Copyable
 {
-    public class StringProvider : InstanceProvider<String>
+    public class StringProvider : InstanceProvider<string>
     {
-        public override string CreateTypedCopy(string toBeCopied)
-        {
-            return String.Copy(toBeCopied);
-        }
+        public override string CreateTypedCopy(string toBeCopied) => string.Copy(toBeCopied);
     }
 }

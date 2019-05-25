@@ -4,16 +4,8 @@ namespace OX.Copyable
 {
     class VisitedGraph : Dictionary<object, object>
     {
-        public new bool ContainsKey(object key)
-        {
-            if (key == null)
-                return true;
-            return base.ContainsKey(key);
-        }
+        public new bool ContainsKey(object key) => key == null ? true : base.ContainsKey(key);
 
-        public new object this[object key]
-        {
-            get { if (key == null) return null; return base[key]; }
-        }
+        public new object this[object key] => key == null ? null : base[key];
     }
 }

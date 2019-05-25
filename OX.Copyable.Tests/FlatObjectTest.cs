@@ -4,47 +4,42 @@
 
     class JustNumbersDefault
     {
-        private int _a;
-        private float _b;
-
         public JustNumbersDefault()
         {
-            _a = 0;
-            _b = 0.0f;
+            TheA = 0;
+            TheB = 0.0f;
         }
 
-        public int TheA { get { return _a; } set { _a = value; } }
-        public float TheB { get { return _b; } set { _b = value; } }
+        public int TheA { get; set; }
+
+        public float TheB { get; set; }
     }
+
     class JustNumbers
     {
-        private int _a;
-        private float _b;
-
         public JustNumbers(int a, float b)
         {
-            _a = a;
-            _b = b;
+            TheA = a;
+            TheB = b;
         }
 
-        public int TheA { get { return _a; } }
-        public float TheB { get { return _b; } }
+        public int TheA { get; }
+
+        public float TheB { get; }
     }
 
     class CopyableNumbers : Copyable
     {
-        private int _a;
-        private float _b;
-        
         public CopyableNumbers(int a, float b)
             : base(a, b)
         {
-            _a = a;
-            _b = b;
+            TheA = a;
+            TheB = b;
         }
 
-        public int TheA { get { return _a; } }
-        public float TheB { get { return _b; } }
+        public int TheA { get; }
+
+        public float TheB { get; }
     }
 
     [TestClass]
@@ -69,6 +64,7 @@
             Assert.AreEqual(n.TheA, c.TheA);
             Assert.AreEqual(n.TheB, c.TheB);
         }
+
         [TestMethod]
         public void RegularObjectWithDefaultConstructorIsCopied()
         {
